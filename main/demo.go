@@ -15,4 +15,6 @@ func demo() {
 	// get items
 	all := dao.GetAllDesk("restaurant_a")
 	fmt.Print(all)
+	// delete items
+	//dao.Delete("restaurant_a", 1)
 }

@@ -9,10 +9,10 @@ dosya ve değişken isimleri, modeller, sorgular değiştirilip gerekli özelle�
 - :triangular_ruler: [tablo oluşturma](https://github.com/murattarslan/go_db_connect#yeni-bir-tablo-olu%C5%9Fturma)
 - :heavy_plus_sign: [tabloya veri ekleme](https://github.com/murattarslan/go_db_connect#tabloya-veri-ekleme)
 - :mag: [tablodan veri alma](https://github.com/murattarslan/go_db_connect#tablodan-veri-alma)
+- :heavy_minus_sign: [tablodan veri silme](https://github.com/murattarslan/go_db_connect#tablodan-veri-silme)
 
 ### çok yakında...
 
-- :heavy_minus_sign: tablodan veri silme
 - :wrench: tablodaki veriyi güncelleme
 
 ## go ile veritabanına bağlanma
@@ -169,5 +169,26 @@ fonksiyonumuz tüm saatırları tek tek dolaşıp nesneleri oluşturdu. Ve bize 
 
 Verileri yazıp yazdıklarımızı gördüğümüze göre şimdi hoşumuza gitmeyenleri silme zamanı
 
+## tablodan veri silme
+
+Tablomuzu oluşturduk, veri ekledik ve eklediklerimizi gördük. Peki ya yanlış veri eklediysek?
+
+sorgumuz basit, bu sorgu her nesnede çalışacaktır çünkü sadece primary key olan integer bir id değeri kullanıyoruz. Bu da zaten her nesnede olamsı gereken bir parametre.
+
+```
+	insertQuery := fmt.Sprintf("delete from %s where id=%v", tableName, id)
+```
+
+sorguyu çalıştırdıktan sonra birşey kalmıyor.
+```
+	_,err = db.Exec(insertQuery)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("complete delete")
+
+```
+
+konsolda 'complete delete' yazısını da gördüğümüzde işlem başarıyla yapıldı demektir. :tada:
 
 [^1]: :warning: sorguda string değer verirken tırnak işareti(') kullanmayı unutmayın
