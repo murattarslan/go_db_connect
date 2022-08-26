@@ -1,5 +1,19 @@
 # go db connect
 
+Bu proje go dilinde veritabanı bağlantısı kurmak ve bağlanılan veritabanında işlemler yapmak için yardımcı döküman amacıyla yazılmıştır.
+dosya ve değişken isimleri, modeller, sorgular değiştirilip gerekli özelleştirmeler yapılarak her yerde kullanılabilir.
+
+### içerik
+
+- [db bağlantısı](https://github.com/murattarslan/go_db_connect#go-ile-veritaban%C4%B1na-ba%C4%9Flanma)
+- [tablo oluşturma](https://github.com/murattarslan/go_db_connect#yeni-bir-tablo-olu%C5%9Fturma)
+
+### çok yakında...
+
+- tabloya veri ekleme
+- tablodaki veriyi güncelleme
+- tablodan veri silme
+
 ## go ile veritabanına bağlanma
 
 dao paketinin içerisinde `conf.go` dosyasında db için konfigürasyon bilgileri bulunacak
