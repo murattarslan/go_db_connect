@@ -1,12 +1,18 @@
 package main
 
 import (
+	"fmt"
 	"myApp/main/dao"
 )
 
 func demo() {
-	//dao.CreateDeskTable("restaurant_a")
-	var item = dao.Desk{}
-	item.SetName("masa2")
-	dao.InsertDesk("restaurant_a", item)
+	// create table
+	//dao.CreateDeskTable("restaurant_b")
+	// insert item
+	//var item = dao.Desk{}
+	//item.SetName("masa2")
+	//dao.InsertDesk("restaurant_a", item)
+	// get items
+	all := dao.GetAllDesk("restaurant_a")
+	fmt.Print(all)
 }

@@ -8,12 +8,12 @@ dosya ve değişken isimleri, modeller, sorgular değiştirilip gerekli özelle�
 - :gear: [db bağlantısı](https://github.com/murattarslan/go_db_connect#go-ile-veritaban%C4%B1na-ba%C4%9Flanma)
 - :triangular_ruler: [tablo oluşturma](https://github.com/murattarslan/go_db_connect#yeni-bir-tablo-olu%C5%9Fturma)
 - :heavy_plus_sign: [tabloya veri ekleme](https://github.com/murattarslan/go_db_connect#tabloya-veri-ekleme)
+- :mag: [tablodan veri alma](https://github.com/murattarslan/go_db_connect#tablodan-veri-alma)
 
 ### çok yakında...
 
-- :mag: tablodan veri alma
-- :wrench: tablodaki veriyi güncelleme
 - :heavy_minus_sign: tablodan veri silme
+- :wrench: tablodaki veriyi güncelleme
 
 ## go ile veritabanına bağlanma
 
@@ -118,6 +118,56 @@ Konsolda id değerini gördüyseniz tebrikler. :tada:
 
 Sıradaki madde bu eklediğimiz verileri tekrar çekme üzerine.
 
+## Tablodaki verileri alma
+
+Sorgu standart select sorgusu. komut yazılır, istenen parametreler girilir, sonra tablo gösterilir
+
+```
+selectQuery := fmt.Sprintf("select id, name, active from %s", tableName)
+
+```
+
+Sorgu hazır olduğuna göre şimdi çalıştırma zamanı...
+
+```
+
+	rows, err := db.Query(selectQuery)
+	if err != nil {
+		panic(err)
+	}
+	// satırlarla işimiz bittiğinde kapatılması için
+	defer rows.Close()
+
+	var result []Desk
+
+	// satırları tek tek dolaşıp her satırda nesnemizi oluşturarak dönüş listemize ekliyoruz
+	for rows.Next() {
+
+		var id int64
+		var name string
+		var active string
+
+		err = rows.Scan(&id, &name, &active)
+		if err != nil {
+			panic(err)
+		}
+
+		item := Desk{name, id, active}
+		result = append(result, item)
+	}
+
+	err = rows.Err()
+	if err != nil {
+		panic(err)
+	}
+	return result
+```
+
+Ve son :tada:
+
+fonksiyonumuz tüm saatırları tek tek dolaşıp nnesneleri oluşturdu. Ve bize tabloyu liste olarak döndü.
+
+Verileri yazıp yazdıklarımızı gördüğümüze göre şimdi hoşumuza gitmeyenleri silme zamanı
 
 
 [^1]: :warning: sorguda string değer verirken tırnak işareti(') kullanmayı unutmayın

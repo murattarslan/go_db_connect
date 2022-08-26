@@ -1,22 +1,13 @@
 package dao
 
 import (
-	"database/sql"
 	"fmt"
 
 	_ "github.com/lib/pq"
 )
 
 func InsertDesk(tableName string, item Desk) int {
-	conf :=
-		"host=" + host +
-			" port=" + port +
-			" user=" + user +
-			" password=" + password +
-			" dbname=" + dbname +
-			" sslmode=disable"
-
-	db, err := sql.Open("postgres", conf)
+	db, err := connect()
 	if err != nil {
 		panic(err)
 	}
@@ -35,15 +26,8 @@ func InsertDesk(tableName string, item Desk) int {
 }
 
 func InsertRestaurant(tableName string, item Restaurant) int {
-	conf :=
-		"host=" + host +
-			" port=" + port +
-			" user=" + user +
-			" password=" + password +
-			" dbname=" + dbname +
-			" sslmode=disable"
 
-	db, err := sql.Open("postgres", conf)
+	db, err := connect()
 	if err != nil {
 		panic(err)
 	}
