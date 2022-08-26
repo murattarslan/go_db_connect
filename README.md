@@ -173,15 +173,15 @@ Verileri yazıp yazdıklarımızı gördüğümüze göre şimdi hoşumuza gitme
 
 Tablomuzu oluşturduk, veri ekledik ve eklediklerimizi gördük. Peki ya yanlış veri eklediysek?
 
-sorgumuz basit, bu sorgu her nesnede çalışacaktır çünkü sadece primary key olan integer bir id değeri kullanıyoruz. Bu da zaten her nesnede olamsı gereken bir parametre.
+sorgumuz basit, bu sorgu her nesnede çalışacaktır çünkü sadece primary key olan integer bir id değeri kullanıyoruz. Bu da zaten her nesnede olması gereken bir parametre.
 
 ```
-	insertQuery := fmt.Sprintf("delete from %s where id=%v", tableName, id)
+	deleteQuery := fmt.Sprintf("delete from %s where id=%v", tableName, id)
 ```
 
 sorguyu çalıştırdıktan sonra birşey kalmıyor.
 ```
-	_,err = db.Exec(insertQuery)
+	_,err = db.Exec(deleteQuery)
 	if err != nil {
 		panic(err)
 	}
@@ -190,5 +190,27 @@ sorguyu çalıştırdıktan sonra birşey kalmıyor.
 ```
 
 konsolda 'complete delete' yazısını da gördüğümüzde işlem başarıyla yapıldı demektir. :tada:
+
+## tablodaki veriyi güncelleme
+
+Olası bir düzenleme için tek çözüm silip yeniden yazmak değil. Bunun yerine güncelleyebiliriz
+
+sorgu yine her zamanki gibi düzenlenebilir[^1]
+
+```
+	updateQuery := fmt.Sprintf("update %s set name='%s' where id=%v", tableName, name, id)
+```
+
+sorguyu çalıştırdıktan sonra birşey kalmıyor.
+```
+	_, err = db.Exec(updateQuery)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("complete edit")
+
+```
+
+konsolda 'complete edit' yazısını da gördüğümüzde işlem başarıyla yapıldı demektir. :tada:
 
 [^1]: :warning: sorguda string değer verirken tırnak işareti(') kullanmayı unutmayın

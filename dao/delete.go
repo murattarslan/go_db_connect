@@ -14,9 +14,9 @@ func Delete(tableName string, id int) {
 	fmt.Println("connect")
 	defer db.Close()
 
-	insertQuery := fmt.Sprintf("delete from %s where id=%v", tableName, id)
+	deleteQuery := fmt.Sprintf("delete from %s where id=%v", tableName, id)
 
-	_, err = db.Exec(insertQuery)
+	_, err = db.Exec(deleteQuery)
 	if err != nil {
 		panic(err)
 	}

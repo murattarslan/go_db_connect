@@ -17,4 +17,6 @@ func demo() {
 	fmt.Print(all)
 	// delete items
 	//dao.Delete("restaurant_a", 1)
+	// update items
+	//dao.UpdateDeskName("restaurant_a", 2, "masa3")
 }
