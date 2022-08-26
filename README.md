@@ -118,7 +118,7 @@ Konsolda id değerini gördüyseniz tebrikler. :tada:
 
 Sıradaki madde bu eklediğimiz verileri tekrar çekme üzerine.
 
-## Tablodaki verileri alma
+## Tablodan veri alma
 
 Sorgu standart select sorgusu. komut yazılır, istenen parametreler girilir, sonra tablo gösterilir
 
@@ -165,7 +165,7 @@ Sorgu hazır olduğuna göre şimdi çalıştırma zamanı...
 
 Ve son :tada:
 
-fonksiyonumuz tüm saatırları tek tek dolaşıp nnesneleri oluşturdu. Ve bize tabloyu liste olarak döndü.
+fonksiyonumuz tüm saatırları tek tek dolaşıp nesneleri oluşturdu. Ve bize tabloyu liste olarak döndü.
 
 Verileri yazıp yazdıklarımızı gördüğümüze göre şimdi hoşumuza gitmeyenleri silme zamanı
 
