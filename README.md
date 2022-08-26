@@ -7,10 +7,10 @@ dosya ve değişken isimleri, modeller, sorgular değiştirilip gerekli özelle�
 
 - :gear: [db bağlantısı](https://github.com/murattarslan/go_db_connect#go-ile-veritaban%C4%B1na-ba%C4%9Flanma)
 - :triangular_ruler: [tablo oluşturma](https://github.com/murattarslan/go_db_connect#yeni-bir-tablo-olu%C5%9Fturma)
+- :heavy_plus_sign: [tabloya veri ekleme](https://github.com/murattarslan/go_db_connect#tabloya-veri-ekleme)
 
 ### çok yakında...
 
-- :heavy_plus_sign: tabloya veri ekleme
 - :mag: tablodan veri alma
 - :wrench: tablodaki veriyi güncelleme
 - :heavy_minus_sign: tablodan veri silme
@@ -76,7 +76,9 @@ Model oluştuğuna göre bu modele uygun bir sql sorgusu hazırlayabiliriz
 			" ACTIVE BOOL NOT NULL" +
 			" ); "
 ```
-Burada standart bir sql sorgusu oluşturuyoruz. Herşey hazır şimdi son olarak sorguyu çalıştıracağız
+Burada standart bir sql sorgusu oluşturuyoruz. Sorguda id değerini 'Serial' tanımladık, bu yüzden veri eklerken id değeri vermemeliyiz. Bu tabloya eklenen her verinin id değeri otomatik olarak postgreSQL tarafından veriliyor.
+
+Herşey hazır şimdi son olarak sorguyu çalıştıracağız
 ```
 r, err := db.Exec(createQuery)
 	if err != nil {
@@ -89,3 +91,29 @@ r, err := db.Exec(createQuery)
 ve bitti. Eğer konsolda 'complete' yazısı görüldüyse tablomuz hazır demektir.
 
 Şimdi sıra tabloya öge eklemekte...
+
+## Tabloya veri ekleme
+
+Oluşturulan tabloya öge eklerken dikkat edeceğimiz durum sorgu. Bu işlemde yazdığımız sorgu bize eklediği verinin id değerini dönecek ve tablo oluştururken yaptığımız konfigürasyon sebebiyle bu sorguda id değeri vermiyoruz.
+
+```
+insertQuery := fmt.Sprintf("insert into %s (name, active) values ('%s', %v) returning id;", tableName, item.name, item.active)
+
+```
+
+Sorgunun sonundaki 'returning id' eki bize eklenen verinin aldığı id değerini dönecek.
+
+Sorgu hazır olduğuna göre şimdi çalıştırma zamanı...
+
+```
+	id := 0
+	err = db.QueryRow(insertQuery).Scan(&id)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("add item... id:%d", id)
+```
+
+Konsolda id değerini gördüyseniz tebrikler :tada:
+
+Sıradaki madde bu eklediğimiz verileri tekrar çekme üzerine.
