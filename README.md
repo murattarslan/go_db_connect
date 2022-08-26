@@ -94,9 +94,7 @@ ve bitti. Eğer konsolda 'complete' yazısı görüldüyse tablomuz hazır demek
 
 ## Tabloya veri ekleme
 
-Oluşturulan tabloya öge eklerken dikkat edeceğimiz durum sorgu. Bu işlemde yazdığımız sorgu bize eklediği verinin id değerini dönecek ve tablo oluştururken yaptığımız konfigürasyon sebebiyle bu sorguda id değeri vermiyoruz. 
-
-:warning: sorguda string değer verirken tırnak işareti(') kullanmayı unutmayın
+Oluşturulan tabloya öge eklerken dikkat edeceğimiz durum sorgu. Bu işlemde yazdığımız sorgu bize eklediği verinin id değerini dönecek ve tablo oluştururken yaptığımız konfigürasyon sebebiyle bu sorguda id değeri vermiyoruz. [^1]
 
 ```
 insertQuery := fmt.Sprintf("insert into %s (name, active) values ('%s', %v) returning id;", tableName, item.name, item.active)
@@ -119,3 +117,7 @@ Sorgu hazır olduğuna göre şimdi çalıştırma zamanı...
 Konsolda id değerini gördüyseniz tebrikler. :tada:
 
 Sıradaki madde bu eklediğimiz verileri tekrar çekme üzerine.
+
+
+
+[^1]: :warning: sorguda string değer verirken tırnak işareti(') kullanmayı unutmayın
