@@ -88,13 +88,15 @@ r, err := db.Exec(createQuery)
 	
 ```
 
-ve bitti. Eğer konsolda 'complete' yazısı görüldüyse tablomuz hazır demektir.
+ve bitti. Eğer konsolda 'complete' yazısı görüldüyse tablomuz hazır demektir. :tada:
 
 Şimdi sıra tabloya öge eklemekte...
 
 ## Tabloya veri ekleme
 
-Oluşturulan tabloya öge eklerken dikkat edeceğimiz durum sorgu. Bu işlemde yazdığımız sorgu bize eklediği verinin id değerini dönecek ve tablo oluştururken yaptığımız konfigürasyon sebebiyle bu sorguda id değeri vermiyoruz.
+Oluşturulan tabloya öge eklerken dikkat edeceğimiz durum sorgu. Bu işlemde yazdığımız sorgu bize eklediği verinin id değerini dönecek ve tablo oluştururken yaptığımız konfigürasyon sebebiyle bu sorguda id değeri vermiyoruz. 
+
+:warning: sorguda string değer verirken tırnak işareti(') kullanmayı unutmayın
 
 ```
 insertQuery := fmt.Sprintf("insert into %s (name, active) values ('%s', %v) returning id;", tableName, item.name, item.active)
@@ -114,6 +116,6 @@ Sorgu hazır olduğuna göre şimdi çalıştırma zamanı...
 	fmt.Printf("add item... id:%d", id)
 ```
 
-Konsolda id değerini gördüyseniz tebrikler :tada:
+Konsolda id değerini gördüyseniz tebrikler. :tada:
 
 Sıradaki madde bu eklediğimiz verileri tekrar çekme üzerine.
