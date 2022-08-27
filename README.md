@@ -10,7 +10,7 @@ dosya ve değişken isimleri, modeller, sorgular değiştirilip gerekli özelle�
 - :heavy_plus_sign: [tabloya veri ekleme](https://github.com/murattarslan/go_db_connect#tabloya-veri-ekleme)
 - :mag: [tablodan veri alma](https://github.com/murattarslan/go_db_connect#tablodan-veri-alma)
 - :heavy_minus_sign: [tablodan veri silme](https://github.com/murattarslan/go_db_connect#tablodan-veri-silme)
-- :wrench: [tablodaki veriyi güncelleme](https://github.com/murattarslan/go_db_connect/edit/master/README.md#tablodaki-veriyi-g%C3%BCncelleme)
+- :wrench: [tablodaki veriyi güncelleme](https://github.com/murattarslan/go_db_connect/#tablodaki-veriyi-g%C3%BCncelleme)
 
 
 ## go ile veritabanına bağlanma
